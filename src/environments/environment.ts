@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyApHHXHzuvjd3DFnCEzyNcqsyT3Nyo4LG4',
-    authDomain: 'the-travels-app.firebaseapp.com',
-    databaseURL: 'https://the-travels-app.firebaseio.com',
-    projectId: 'the-travels-app',
-    storageBucket: 'the-travels-app.appspot.com',
-    messagingSenderId: '342371554953'
+    apiKey: 'AIzaSyCv7RLO4fcczFkuaMDfDNykq0rmILV8PAA',
+    authDomain: 'to-infinity-n-beyond.firebaseapp.com',
+    databaseURL: 'https://to-infinity-n-beyond.firebaseio.com',
+    projectId: 'to-infinity-n-beyond',
+    storageBucket: 'to-infinity-n-beyond.appspot.com',
+    messagingSenderId: '222324335576'
   }
 };
