@@ -20,7 +20,7 @@ import { AuthModule } from './auth/auth.module';
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
