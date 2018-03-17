@@ -6,11 +6,15 @@ import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { AgencySignupComponent } from './signup/agency-signup/agency-signup.component';
+import { TouristSignupComponent } from './signup/tourist-signup/tourist-signup.component';
 
 @NgModule({
     declarations: [
         SigninComponent,
-        SignupComponent
+        SignupComponent,
+        AgencySignupComponent,
+        TouristSignupComponent
     ],
     imports: [
         SharedModule,
