@@ -23,6 +23,7 @@
     "@angular/material": "^5.2.4",
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/platform-server": "^5.2.9",
     "@angular/router": "^5.2.0",
     "@ngrx/store": "^5.2.0",
     "angularfire2": "^5.0.0-rc.6",
