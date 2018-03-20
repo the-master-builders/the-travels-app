@@ -1,23 +1,30 @@
 <mat-toolbar color="primary">
   <div fxHide.gt-xs>
-    <button mat-icon-button (click)= "onToggleSidenav()">
+    <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div class="logo">
-    <a routerLink="/">The Travels App</a>
+  <div class="logo" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-button routerLink="/">
+      <mat-icon fxHide.xs>card_travel</mat-icon>
+      <span>Wanderers</span>
+    </button>
+    <div fxHide.xs>
+      <button mat-button routerLink="/trips">Trips</button>
+      <button mat-button routerLink="/destinations">Destinations</button>
+    </div>
   </div>
-  <div class="nav-list" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
-    <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-      <li>
-        <button routerLink = "/trips" mat-button>Trips</button>
-      </li>
-      <li>
-        <button routerLink = "/destinations" mat-button>Destinations</button>
-      </li>
-      <li>
-        <button routerLink = "/auth/signin" mat-button>Login</button>
-      </li>
-    </ul>
+  <div class="nav-list" fxFlex fxLayout fxLayoutAlign="flex-end">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/auth/signin">
+        <span>Sign in</span>
+      </button>
+      <button mat-menu-item routerLink="/auth/signup">
+        <span>Sign up</span>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>
