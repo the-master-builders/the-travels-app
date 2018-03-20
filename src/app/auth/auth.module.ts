@@ -8,6 +8,7 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AgencySignupComponent } from './signup/agency-signup/agency-signup.component';
 import { TouristSignupComponent } from './signup/tourist-signup/tourist-signup.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,7 @@ import { TouristSignupComponent } from './signup/tourist-signup/tourist-signup.c
     imports: [
         SharedModule,
         ReactiveFormsModule,
-        AuthRoutingModule,
+        AuthRoutingModule
     ],
     exports: [
         AuthRoutingModule

@@ -12,6 +12,8 @@ import { SidebarComponent } from './core/navigation/sidebar/sidebar.component';
 import { WelcomeComponent } from './core/welcome/welcome.component';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
