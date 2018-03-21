@@ -3,29 +3,39 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthData } from './auth-data.model';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Agency } from './agency.model';
+import * as fromRoot from '../app.reducer';
+import * as Auth from './auth.actions';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
   isAuth = false;
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(
+    private router: Router,
+    private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    private store: Store<fromRoot.State>
   ) { }
 
   initAuthListener() {
     this.afAuth.authState.subscribe(agent => {
       if (agent) {
         this.isAuth = true;
+        this.store.dispatch(new Auth.SetAuthenticated());
       } else {
         this.isAuth = false;
+        this.store.dispatch(new Auth.SetUnauthenticated());
       }
     });
   }
 
-  loginAgent(authData: AuthData) {
+  loginAgency(authData: AuthData) {
     this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password).then(
       response => {
-        console.log('login scuccessful');
+        console.log('login successful');
+        this.router.navigate(['agency', 'dashboard']);
       }
     ).catch(
       (error: Error) => {

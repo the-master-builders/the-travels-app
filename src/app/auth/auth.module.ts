@@ -9,13 +9,15 @@ import { SignupComponent } from './signup/signup.component';
 import { AgencySignupComponent } from './signup/agency-signup/agency-signup.component';
 import { TouristSignupComponent } from './signup/tourist-signup/tourist-signup.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AgencySigninComponent } from './signin/agency-signin/agency-signin.component';
 
 @NgModule({
     declarations: [
         SigninComponent,
         SignupComponent,
         AgencySignupComponent,
-        TouristSignupComponent
+        TouristSignupComponent,
+        AgencySigninComponent
     ],
     imports: [
         SharedModule,

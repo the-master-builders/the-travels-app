@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './shared/material.module';
 
@@ -13,7 +15,7 @@ import { WelcomeComponent } from './core/welcome/welcome.component';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { reducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -9,6 +9,9 @@ import { AgencyComponent } from './agency/agency.component';
     CommonModule,
     AgencyRoutingModule
   ],
+  exports: [
+    AgencyRoutingModule
+  ],
   declarations: [AgencyComponent]
 })
 export class AgencyModule { }
