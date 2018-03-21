@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  isAuth = false;
 
   constructor(
     private router: Router,
@@ -22,10 +21,8 @@ export class AuthService {
   initAuthListener() {
     this.afAuth.authState.subscribe(agent => {
       if (agent) {
-        this.isAuth = true;
         this.store.dispatch(new Auth.SetAuthenticated());
       } else {
-        this.isAuth = false;
         this.store.dispatch(new Auth.SetUnauthenticated());
       }
     });
@@ -54,6 +51,12 @@ export class AuthService {
     ).catch(
       (error: Error) => console.error(error.message)
     );
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
+    this.store.dispatch(new Auth.SetUnauthenticated);
+    this.router.navigate(['/']);
   }
 
 }

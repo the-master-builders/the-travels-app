@@ -1,4 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService } from '../../../auth/auth.service';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../../app.reducer';
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +12,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
-  constructor() { }
+  isAuth$: Observable<boolean>;
+
+  constructor(private authSvc: AuthService, private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
+    this.isAuth$ = this.store.select(fromRoot.getIsAuthenticated);
   }
 
   onToggleSidenav() {
     this.sidenavToggle.emit();
+  }
+
+  onLogout() {
+    this.authSvc.logout();
   }
 
 }
