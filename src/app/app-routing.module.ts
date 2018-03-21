@@ -1,4 +1,4 @@
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { WelcomeComponent } from './core/welcome/welcome.component';
 const routes: Routes = [
