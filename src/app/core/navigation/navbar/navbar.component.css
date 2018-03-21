@@ -10,11 +10,20 @@ a {
 mat-toolbar {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
 }
-.mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {
+.mat-button {
     font-size: 1rem;
     font-weight: 500;
 }
 .logo .mat-icon {
     font-size: 1.5rem;
     margin-right: 0.5rem;
+}
+form {
+    width: 100%;
+}
+mat-form-field {
+    font-size: 1rem;
+}
+mat-placeholder {
+    color: white;
 }

@@ -20,7 +20,8 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatAutocompleteModule
 } from '@angular/material';
 
 @NgModule({
@@ -45,7 +46,8 @@ import {
         MatSortModule,
         MatPaginatorModule,
         MatSnackBarModule,
-        MatMenuModule
+        MatMenuModule,
+        MatAutocompleteModule
     ],
     exports: [
         FlexLayoutModule,
@@ -68,7 +70,8 @@ import {
         MatSortModule,
         MatPaginatorModule,
         MatSnackBarModule,
-        MatMenuModule
+        MatMenuModule,
+        MatAutocompleteModule
     ]
 })
 export class MaterialModule { }

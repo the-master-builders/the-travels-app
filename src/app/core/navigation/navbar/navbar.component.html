@@ -1,30 +1,57 @@
 <mat-toolbar color="primary">
-  <div fxHide.gt-xs>
-    <button mat-icon-button (click)="onToggleSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
-  <div class="logo" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-button routerLink="/">
-      <mat-icon fxHide.xs>card_travel</mat-icon>
-      <span>Wanderers</span>
-    </button>
-    <div fxHide.xs>
-      <button mat-button routerLink="/trips">Trips</button>
-      <button mat-button routerLink="/destinations">Destinations</button>
+  <div *ngIf="!isSearch" fxFlexFill fxLayout fxLayoutAlign="center center">
+    <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="logo" fxLayout fxLayoutAlign="center center">
+      <button mat-button routerLink="/">
+        <mat-icon fxHide.xs>card_travel</mat-icon>
+        <span>Wanderers</span>
+      </button>
+      <div fxHide.xs>
+        <button mat-button routerLink="/trips">Trips</button>
+        <button mat-button routerLink="/destinations">Destinations</button>
+      </div>
+    </div>
+    <div class="nav-list" fxFlex fxLayout fxLayoutAlign="flex-end center">
+      <button mat-icon-button (click)="onSearchActivate()">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/auth/signin">
+          <span>Sign in</span>
+        </button>
+        <button mat-menu-item routerLink="/auth/signup">
+          <span>Sign up</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
-  <div class="nav-list" fxFlex fxLayout fxLayoutAlign="flex-end">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/auth/signin">
-        <span>Sign in</span>
+  <div *ngIf="isSearch" fxFlexFill fxLayout fxLayoutAlign="center center">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <button mat-icon-button type="button" (click)="onSearchExit()">
+        <mat-icon>arrow_back</mat-icon>
       </button>
-      <button mat-menu-item routerLink="/auth/signup">
-        <span>Sign up</span>
+      <mat-form-field floatLabel="never">
+        <input type="text" matInput name="searchText" ngModel [formControl]="myControl" [matAutocomplete]="auto"/>
+        <mat-placeholder>Type to search</mat-placeholder>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-icon-button type="button" *ngIf="searchText" mat-icon-button (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
       </button>
-    </mat-menu>
+      <button mat-icon-button type="submit">
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
   </div>
 </mat-toolbar>
