@@ -5,13 +5,16 @@
   <a mat-list-item [routerLink]="['destinations']" (click)="onSidenavClose()">
     <span class="nav-caption">Destinations</span>
   </a>
-  <a mat-list-item [routerLink]="['auth','signin']" (click)="onSidenavClose()">
+  <a mat-list-item *ngIf="!( isAuth$ | async )" [routerLink]="['auth','signup']" (click)="onSidenavClose()">
+    <span>Register</span>
+  </a>
+  <a mat-list-item *ngIf="!( isAuth$ | async )" [routerLink]="['auth','signin']" (click)="onSidenavClose()">
     <span>Login</span>
   </a>
-  <!-- <mat-list-item>
-    <button mat-icon-button (click)="onLogout()">
-      <mat-icon>eject</mat-icon>
-      <span class="nav-caption">Logout</span>
-    </button>
-  </mat-list-item> -->
+  <a mat-list-item *ngIf="( isAuth$ | async )" [routerLink]="['auth','signup']" (click)="onSidenavClose()">
+    <span>My Profile</span>
+  </a>
+  <a mat-list-item *ngIf="( isAuth$ | async )" (click)="onLogout()">
+    <span>Logout</span>
+  </a>
 </mat-nav-list>
