@@ -24,6 +24,14 @@ form {
 mat-form-field {
     font-size: 1rem;
 }
-mat-placeholder {
+input[type=text] {
+    color: white;
+    caret-color: white;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+input[type=text]::-webkit-input-placeholder {
     color: white;
 }

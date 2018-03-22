@@ -32,21 +32,13 @@
       </mat-menu>
     </div>
   </div>
-  <div *ngIf="isSearch" fxFlexFill>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayout fxLayoutAlign="center center">
-      <button mat-icon-button fxFlex="none" type="button" (click)="onSearchExit()">
+  <div *ngIf="isSearch" fxFlexFill fxLayoutAlign="center center">
+    <form #f="ngForm" (ngSubmit)="onSearch(f)" fxLayout fxLayoutAlign="center center">
+      <button mat-icon-button type="button" (click)="onSearchExit()">
         <mat-icon>arrow_back</mat-icon>
       </button>
-      <mat-form-field fxFlex floatLabel="never">
-        <input type="text" matInput name="searchText" ngModel [formControl]="myControl" [matAutocomplete]="auto"/>
-        <mat-placeholder>Type to search</mat-placeholder>
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <button mat-icon-button fxFlex="none" type="button" *ngIf="searchText" mat-icon-button (click)="onSearchClear()">
+      <input type="text" placeholder="Type to search" autofocus required [(ngModel)]="searchText" name="searchText" ngModel fxFlex>
+      <button mat-icon-button type="button" *ngIf="searchText" mat-icon-button (click)="onSearchClear()">
         <mat-icon>close</mat-icon>
       </button>
       <button mat-icon-button type="submit">
