@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
@@ -16,30 +15,11 @@ export class NavbarComponent implements OnInit {
   isSearch: boolean;
   searchText: string;
 
-  myControl: FormControl = new FormControl();
-
-  options = [
-    'One',
-    'Two',
-    'Three'
-  ];
-
   constructor() { }
 
   filteredOptions: Observable<string[]>;
 
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(val => this.filter(val))
-      );
-  }
-
-  filter(val: string): string[] {
-    return this.options.filter(option =>
-      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
-  }
+  ngOnInit() { }
 
   onToggleSidenav() {
     this.sidenavToggle.emit();
@@ -49,9 +29,10 @@ export class NavbarComponent implements OnInit {
     this.isSearch = true;
   }
 
-  onSubmit(f: NgForm) {
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
+  onSearch(f: NgForm) {
+    if (f.valid) {
+      console.log(f.value.searchText);
+    }
   }
 
   onSearchExit() {
@@ -60,7 +41,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onSearchClear() {
-    this.searchText = "";
+    this.searchText = '';
   }
 
 }
