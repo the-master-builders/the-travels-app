@@ -1,1 +1,3 @@
-<p>Badass Agency Dashboard for {{ agencyName }}</p>
+<div>
+    Badass Agency Dashboard for {{ (agency | async)?.name }}
+</div>

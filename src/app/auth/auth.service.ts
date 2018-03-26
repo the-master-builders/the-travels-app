@@ -46,7 +46,12 @@ export class AuthService {
   }
 
   storeAgencyDetails(agency: Agency) {
-    this.afs.collection<Agency>('testAgencies').add(agency).then(
+    // this.afs.collection<Agency>('testAgencies').add(agency).then(
+    //   response => console.log('Agency Added.')
+    // ).catch(
+    //   (error: Error) => console.error(error.message)
+    // );
+    this.afs.doc(`testAgencies/${agency.agencyId}`).set(agency).then(
       response => console.log('Agency Added.')
     ).catch(
       (error: Error) => console.error(error.message)
