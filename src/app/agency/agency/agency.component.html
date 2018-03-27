@@ -1,3 +1,13 @@
-<div>
-    Badass Agency Dashboard for {{ (agency$ | async)?.name }}
-</div>
+<mat-card class="profile-card">
+    <mat-card-header>
+        <mat-card-title>
+            {{ (agency$ | async)?.name | titlecase }}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        Contact: {{ (agency$ | async)?.phone.contactNo}}
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary">Edit</button>
+    </mat-card-actions>
+</mat-card>

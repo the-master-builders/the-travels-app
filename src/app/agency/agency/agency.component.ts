@@ -22,7 +22,6 @@ export class AgencyComponent implements OnInit, OnDestroy {
       this.agencyId = state.uid;
       this.agencyDoc = this.afs.doc(`testAgencies/${this.agencyId}`);
       this.agency$ = this.agencyDoc.valueChanges();
-      // this.agencyDoc.valueChanges().subscribe(agent => console.log(agent));
     });
   }
 
